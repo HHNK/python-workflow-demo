@@ -10,3 +10,7 @@ def test_interactive_map():
     make_interactive_map(gdf, output_path)
 
     assert output_path.exists()
+
+
+def test_true():
+    assert True
