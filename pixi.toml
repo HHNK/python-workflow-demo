@@ -38,6 +38,7 @@ tqdm = "*"
 ruff = "*"
 gdal = "*"
 urllib3 = "<2.0" #threedi-api-client
+pytest = ">=8.3.5,<9"
 
 [pypi-dependencies]
 python-dotenv = "*"
@@ -56,6 +57,7 @@ jupytext = "*"
 #Editable installs, not installed on test. #FIXME doesnt work on Github Actions.
 hhnk-threedi-tools = { path = "../hhnk-threedi-tools", editable = true }
 hhnk-research-tools = { path = "../hhnk-research-tools", editable = true }
+python_workflow_demo = { path = ".", editable = true }
 
 [feature.test.pypi-dependencies]
 #Install a branch from github

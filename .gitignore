@@ -32,3 +32,5 @@ test.cmd
 tests/data/new_project/*
 envs/environment_spyder_test.yml
 hhnk_threedi_tools/breaches/api_ldo_key.txt
+
+*.egg-info

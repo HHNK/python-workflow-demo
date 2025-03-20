@@ -1,9 +1,21 @@
+[project]
+name = "python_workflow_demo"
+version = "0.1.0"
+description = "Demo python usage"
+license = "MIT"
+
+[project.urls]
+Repository = "https://github.com/hhnk/python-workflow-demo.git"
+
+[tool.setuptools.packages.find]
+include = ["python_workflow_demo"]
+
 [tool.ruff]
 # see https://docs.astral.sh/ruff/rules/ for meaning of rules
 line-length = 119
 
 #Exclude external packages in formatter
-extend-exclude = ["hhnk_threedi_tools/external/**/*.py", ".pixi/*"]
+extend-exclude = [".pixi/*"]
 include = ["*.py"]
 
 [tool.ruff.lint]

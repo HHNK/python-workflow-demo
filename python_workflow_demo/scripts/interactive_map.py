@@ -1,15 +1,15 @@
 # %% Code test
 import geopandas as gpd
 import hhnk_research_tools as hrt
-from project import Project
+
+from python_workflow_demo.scripts.project import Project
 
 
-def test_interactive_map(p):
-    gdf = p.input.panden.load()
+def make_interactive_map(gdf, output_path):
     datacolumn = "bouwjaar"
     colormap_name = "viridis"
     colormap_steps = None
-    output_path = p.output.interactive_map.path
+
     title = "Interactive map test"
     legend_label = "Testlabels"
     tooltip_columns = ["gid", "bouwjaar"]
@@ -31,13 +31,13 @@ def test_interactive_map(p):
         quantiles=quantiles,
     )
 
-    assert output_path.exists()
-
 
 # %%
 if __name__ == "__main__":
     p = Project(r"D:\github\wvangerwen\demo_data")
-    test_interactive_map(p)
+    gdf = p.input.panden.load()
+    output_path = p.output.interactive_map.path
+    make_interactive_map(gdf, output_path)
 
     # Open in browser
     import webbrowser
