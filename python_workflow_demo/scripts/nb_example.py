@@ -8,3 +8,5 @@ display(HTML("<style>.container {width:90% !important;}</style>"))
 
 self = StartCalculationGui(data={})
 display(self.tab)
+
+# %%

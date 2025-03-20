@@ -11,7 +11,7 @@ sort_imports = "python -m ruff check  ./**/*.py --select I --fix --force-exclude
 fmt = "python -m ruff format ./**/*.py --force-exclude"
 style = {depends-on = ["sort_imports", "fmt"]} # `pixi run style`
 
-lab = "jupyter lab python_workflow_demo"
+lab = "jupyter lab"
 
 #Starting vs code using vs-code.cmd (pixi run code)
 code = "code"
@@ -19,7 +19,7 @@ code_insiders = "code-insiders"
 
 [dependencies]
 python = "3.12.*"
-numpy = "*"
+numpy ="<2"
 pandas = "*"
 geopandas = "*"
 pyproj = "*"
@@ -37,9 +37,15 @@ oracledb = "*"
 tqdm = "*"
 ruff = "*"
 gdal = "*"
+urllib3 = "<2.0" #threedi-api-client
 
 [pypi-dependencies]
 python-dotenv = "*"
+threedigrid = "==2.3.3"
+threedidepth = "==0.6.3"
+threedigrid_builder = "==1.14.4"
+threedi-api-client = "==4.1.8"
+
 
 [feature.dev.dependencies]
 jupyterlab = "*"
@@ -57,5 +63,5 @@ hhnk-research-tools = { git = "https://github.com/hhnk/hhnk-research-tools.git",
 
 
 [environments]
-dev = ["dev"]
+default = ["dev"]
 test = { features=["test"], no-default-feature = false }
