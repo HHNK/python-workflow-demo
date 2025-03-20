@@ -1,4 +1,6 @@
 # %%
+import os
+
 import hhnk_research_tools as hrt
 
 
@@ -14,15 +16,16 @@ class inputDir(hrt.Folder):
     """Input directory"""
 
     def __init__(self, base, name):
-        super().__init__(base, name)
+        super().__init__(os.path.join(base, name))
 
         self.add_file("dem", "dem.tif")
+        self.add_file("panden", "panden.gpkg")
 
 
 class outputDir(hrt.Folder):
     """Input directory"""
 
     def __init__(self, base, name):
-        super().__init__(base, name)
+        super().__init__(os.path.join(base, name))
 
-        self.add_file("dem", "dem.tif")
+        self.add_file("interactive_map", "interactive_map.html")

@@ -1,25 +1,24 @@
 # %% Code test
 import geopandas as gpd
-import hhnk_research_tools.logger as logging
-from hhnk_research_tools.gis.interactive_map import create_interactive_map
-
-logger = logging.get_logger("hrt.gis.interactive_map", level="DEBUG")
+import hhnk_research_tools as hrt
+from project import Project
 
 
-def test_interactive_map():
-    gdf = gpd.read_file(TEST_DIRECTORY.joinpath(r"area_test_labels.gpkg"))
-    gdf["label"] = "label"
-    datacolumn = "id"
+def test_interactive_map(p):
+    gdf = p.input.panden.load()
+    datacolumn = "bouwjaar"
     colormap_name = "viridis"
     colormap_steps = None
-    output_path = TEMP_DIR.joinpath("interactive_map.html")
+    output_path = p.output.interactive_map.path
     title = "Interactive map test"
     legend_label = "Testlabels"
-    tooltip_columns = ["id", "label"]
-    tooltip_aliases = ["id", "Label"]
-    quantiles = [0, 0.5, 0.8, 1]
+    tooltip_columns = ["gid", "bouwjaar"]
+    tooltip_aliases = ["gid", "bouwjaar"]
+    quantiles = [0, 0.1, 0.5, 0.8, 1]
 
-    v = create_interactive_map(
+    # quantiles = np.arange(0, 1.1, 0.1)
+
+    v = hrt.create_interactive_map(
         gdf=gdf,
         datacolumn=datacolumn,
         output_path=output_path,
@@ -37,4 +36,10 @@ def test_interactive_map():
 
 # %%
 if __name__ == "__main__":
-    test_interactive_map()
+    p = Project(r"D:\github\wvangerwen\demo_data")
+    test_interactive_map(p)
+
+    # Open in browser
+    import webbrowser
+
+    webbrowser.open(p.output.interactive_map.path)
