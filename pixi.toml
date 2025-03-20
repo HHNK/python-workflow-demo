@@ -1,0 +1,61 @@
+[project]
+channels = ["conda-forge"]
+name = "python-workflow-demo"
+platforms = ["win-64", "linux-64"]
+version = "2025.1"
+# repository = "https://github.com/HHNK/spoc_hhnk"
+
+[tasks]
+#Styling
+sort_imports = "python -m ruff check  ./**/*.py --select I --fix --force-exclude"
+fmt = "python -m ruff format ./**/*.py --force-exclude"
+style = {depends-on = ["sort_imports", "fmt"]} # `pixi run style`
+
+lab = "jupyter lab python_workflow_demo"
+
+#Starting vs code using vs-code.cmd (pixi run code)
+code = "code"
+code_insiders = "code-insiders"
+
+[dependencies]
+python = "3.12.*"
+numpy = "*"
+pandas = "*"
+geopandas = "*"
+pyproj = "*"
+xlrd = "*"
+xlwt = "*"
+openpyxl = "*"
+lxml = "*"
+pyodbc = "*"
+pyarrow = "*"
+rioxarray = "*"
+fiona = "*"
+pip = "*"
+requests = "*"
+oracledb = "*"
+tqdm = "*"
+ruff = "*"
+gdal = "*"
+
+[pypi-dependencies]
+python-dotenv = "*"
+
+[feature.dev.dependencies]
+jupyterlab = "*"
+ipywidgets = "*"
+jupytext = "*"
+
+[feature.dev.pypi-dependencies]
+#Editable installs, not installed on test. #FIXME doesnt work on Github Actions.
+hhnk-threedi-tools = { path = "../hhnk-threedi-tools", editable = true }
+hhnk-research-tools = { path = "../hhnk-research-tools", editable = true }
+
+[feature.test.pypi-dependencies]
+#Install a branch from github
+hhnk-research-tools = { git = "https://github.com/hhnk/hhnk-research-tools.git", rev = "main" }
+
+
+[environments]
+dev = ["dev"]
+test = { features=["test"], no-default-feature = false }
