@@ -21,8 +21,14 @@
     ],
     "notebook.lineNumbers": "on",
     "files.exclude": {
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.mypy_cache": true,
+        "**.egg-info": true,
     },
     "interactiveWindow.alwaysScrollOnNewCell": true,
     "telemetry.telemetryLevel": "off",
+    "python.analysis.extraPaths": ["../hhnk-research-tools"]
+    // Need to add the editable installs here because pylance doesnt recognize them.
+    // Can maybe be removed once https://github.com/prefix-dev/pixi/issues/2356 is fixed
 }
