@@ -18,7 +18,6 @@ jobs:
       matrix:
         os: ["windows-latest", ]
         # ["ubuntu-latest", "windows-latest"]
-        python-version: [ "test", ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +28,7 @@ jobs:
           pixi-version: "latest"
           cache: true
           # cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-          environments: ${{ matrix.python-version }}
+          environments: test
           
       - name: Run Tests
         run: pixi run -e test tests

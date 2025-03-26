@@ -58,6 +58,7 @@ jupytext = "*"
 
 [feature.dev.pypi-dependencies]
 #Editable installs, not installed on test. #FIXME doesnt work on Github Actions.
+# https://github.com/prefix-dev/pixi/issues/2763 
 hhnk-threedi-tools = { path = "../hhnk-threedi-tools", editable = true }
 hhnk-research-tools = { path = "../hhnk-research-tools", editable = true }
 python_workflow_demo = { path = ".", editable = true }
