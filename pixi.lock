@@ -346,8 +346,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/98/ea/1154f19785c18d35066ce8819ba50aedec91e4194d712d84e14930e7b073/threedigrid-2.3.3-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/da/86/6603905deeed966584c7b8d1367c03034d4bc347e45dad9989f8a0576112/threedigrid_builder-1.14.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: .
-      - pypi: ../hhnk-research-tools
-      - pypi: ../hhnk-threedi-tools
       win-64:
       - conda: https://conda.anaconda.org/conda-forge/win-64/_libavif_api-1.2.1-h57928b3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/_openmp_mutex-4.5-2_gnu.conda
@@ -667,8 +665,6 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/98/ea/1154f19785c18d35066ce8819ba50aedec91e4194d712d84e14930e7b073/threedigrid-2.3.3-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6c/d8/e3d88ad1c2e46562585565f241dba53c089d9d7ab45aa20f51d14a01ee09/threedigrid_builder-1.14.4-cp312-cp312-win_amd64.whl
       - pypi: .
-      - pypi: ../hhnk-research-tools
-      - pypi: ../hhnk-threedi-tools
   test:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -2864,22 +2860,10 @@ packages:
   requires_dist:
   - numpy>=1.19.3
   requires_python: '>=3.9'
-- pypi: ../hhnk-research-tools
-  name: hhnk-research-tools
-  version: '2024.1'
-  sha256: 8bee32257dd36c16328eaaeb343df07ab7326cbc6845ea5ec84b8583ca6819fa
-  requires_python: '>=3.7'
-  editable: true
 - pypi: git+https://github.com/hhnk/hhnk-research-tools.git?rev=main#362fe482c3a0173f661e04793752445026b2fb17
   name: hhnk-research-tools
   version: '2024.1'
   requires_python: '>=3.7'
-- pypi: ../hhnk-threedi-tools
-  name: hhnk-threedi-tools
-  version: '2024.1'
-  sha256: 2e2f0691ef51ad5a707725b88b19fca4df1950b0ecdc9452ebbbf847e284e36b
-  requires_python: '>=3.7'
-  editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/hpack-4.1.0-pyhd8ed1ab_0.conda
   sha256: 6ad78a180576c706aabeb5b4c8ceb97c0cb25f1e112d76495bff23e3779948ba
   md5: 0a802cb9888dd14eeefc611f05c40b6e
