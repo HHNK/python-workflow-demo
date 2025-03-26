@@ -1,4 +1,6 @@
 # %%
+import pytest
+
 from python_workflow_demo.scripts.interactive_map import make_interactive_map
 from python_workflow_demo.scripts.project import Project
 
@@ -17,3 +19,9 @@ def test_true():
 
 def test_hrt():
     import hhnk_research_tools
+
+
+def test_htt():
+    """This should fail as htt is not on the test env."""
+    with pytest.raises(Exception):
+        import hhnk_threedi_tools
