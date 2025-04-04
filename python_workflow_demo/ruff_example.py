@@ -1,5 +1,6 @@
 # # %%
-# """Ruff will format and lint code
+# """Ruff format en lint de code. Uncomment onderstaande en sla op het bestand op.
+# Mits de Ruff extensie is geinstalleerd.
 # # TODO Todo Tree highlights TODO's, # FIXME, as long as there's a # in front of it
 # """
 
@@ -12,4 +13,5 @@
 # import hhnk_research_tools
 
 # print( 'example of bad format'    )     #hi
+# print("This line is 119 characters", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 # print("This line is longer than 119 characters", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")

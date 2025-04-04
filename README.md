@@ -24,7 +24,7 @@ Zie [settings.json](https://github.com/HHNK/python-workflow-demo/.vscode/setting
 
 Optional
 - Todo Tree ( # TODO highlights in code)
-- autoDocstring (standaard format voor docstrings)
+- autoDocstring - Python Docstring Generator (standaard format voor docstrings, bij gebrek aan copilot)
 - Intellicode Completions (tab completions)
 - Continue (lokaal AI code assistant, setup nodig)
 

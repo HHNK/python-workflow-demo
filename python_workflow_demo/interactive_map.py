@@ -1,11 +1,24 @@
 # %% Code test
+
+from pathlib import Path
+
 import geopandas as gpd
 import hhnk_research_tools as hrt
 
 from python_workflow_demo.project import Project
 
 
-def make_interactive_map(gdf, output_path):
+def make_interactive_map(gdf: gpd.GeoDataFrame, output_path: Path):
+    """
+    Maak een HTML met een folium map en een shapebestand.
+
+    Parameters
+    ----------
+    gdf : gpd.GeoDataFrame
+        gdf met shapes om op kaart te tekenen
+    output_path : Path
+        output html bestand
+    """
     datacolumn = "bouwjaar"
     colormap_name = "viridis"
     colormap_steps = None
@@ -42,4 +55,4 @@ if __name__ == "__main__":
     # Open in browser
     import webbrowser
 
-    webbrowser.open(p.output.interactive_map.path)
+    webbrowser.open(output_path)

@@ -1,4 +1,8 @@
 # %%
+"""Voorbeeld project mappenstructuur. Dit kan centraal op 1 plek gedefineerd worden
+waarna het in alle scripts is te importeren.
+"""
+
 import os
 
 import hhnk_research_tools as hrt
