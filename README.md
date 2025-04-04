@@ -1,19 +1,22 @@
 # Python workflow demo
 [![tests](https://github.com/HHNK/python-workflow-demo/actions/workflows/test_automatic.yml/badge.svg)](https://github.com/hhnk/python-workflow-demo/actions/workflows/test_automatic.yml)
 
-Standaard setup voor python-projects bij HHNK.
+Standaard setup voor python-projects bij HHNK. In de repo staan een aantal voorbeelden van hoe een project ingericht kan worden waarmee makkelijk samengewerkt kan worden voor python ontwikkelwerk. 
+
+Onderstaand staat uitgewerkt welke software wordt gebruikt, hoe testen opgezet kunnen worden, projectopzet en meer.
 
 # IDE
-Veel opties, we gebruiken [Visual Studio Code](https://code.visualstudio.com/download). Biedt goede integratie van notebooks en tal van andere extensions.
+Voor de developer environment zijn er veel opties, we gebruiken [Visual Studio Code](https://code.visualstudio.com/download). Dit biedt goede integratie van notebooks en tal van andere extensions. Uiteindelijk zal persoonlijke voorkeur ook meespelen in de keuze. Om samenwerking binnen het team te bevorderen maken we alleen gebruik van vs-code.
 
 Overige IDE's\
 Visual Studio Code Insiders [installer](https://code.visualstudio.com/insiders) - pre-releases, tegenwoordig niet zo meer nodig\
-Cursor AI (https://www.cursor.com/) - Upcoming, vs-code based, maar vereist licentie, met juiste extensions kan deel ook in vs-code. 
-
+Cursor AI (https://www.cursor.com/) - Upcoming, vs-code based, maar vereist licentie, met juiste extensions kan deel ook in vs-code.
+Spider - Mindere ervaring wat betreft Interactive terminal.
+Jetbrains Pycharm - Ook wel goed, maar licententie nodig.
 
 Zie [settings.json](https://github.com/HHNK/python-workflow-demo/.vscode/settings.json) voor standaard instellingen.
 
-Extensions:
+<img src="img/vs-code_extensions.png" width="30"/> Gebruikte extensions:
 - Python
 - Jupyter
 - Ruff (code formatting / linting)
@@ -26,7 +29,7 @@ Optional
 - Continue (lokaal AI code assistant, setup nodig)
 
 Het is daarnaast nodig om de juiste python environment te selecteren om code te draaien, maar ook voor [code tests](#code-testing).
-Makkelijkste route is op een .py te openen en dan rechtsonder interpreter selecteren.
+Makkelijkste route is op een willekeurig `.py` te openen en dan rechtsonder interpreter selecteren.
 <img src="img/python_env_selection.png" width=""/>\
 Anders kan het ook met `ctrl+shift+P` -> `Python: select interpreter`. Het kan zijn met een Pixi env dat die er niet tussen staat. Wanneer je vs-code opstart met de `vs-code.cmd` zou dit wel moeten werken.
 
