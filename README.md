@@ -1,4 +1,6 @@
 # Python workflow demo
+[![tests](https://github.com/HHNK/python-workflow-demo/actions/workflows/test_automatic.yml/badge.svg)](https://github.com/hhnk/python-workflow-demo/actions/workflows/test_automatic.yml)
+
 Standaard setup voor python-projects bij HHNK.
 
 # IDE
@@ -23,9 +25,16 @@ Optional
 - Intellicode Completions (tab completions)
 - Continue (lokaal AI code assistant, setup nodig)
 
+Het is daarnaast nodig om de juiste python environment te selecteren om code te draaien, maar ook voor [code tests](#code-testing).
+Makkelijkste route is op een .py te openen en dan rechtsonder interpreter selecteren.
+<img src="img/python_env_selection.png" width=""/>\
+Anders kan het ook met `ctrl+shift+P` -> `Python: select interpreter`. Het kan zijn met een Pixi env dat die er niet tussen staat. Wanneer je vs-code opstart met de `vs-code.cmd` zou dit wel moeten werken.
+
+Bij een mamba installatie kan het zijn dat de mamba installer niet in het windows path zit. Hiervoor kan in de vs code settings (`ctrl+shift+P`-> `Preferences: Open User Settings`) het condaPath worden opgegeven. Bijvoorbeeld:\
+`"python.condaPath": "D:\\ProgramData\\miniforge\\Scripts\\conda.exe"`
 
 # Env management
-Meerdere opties zijn zelf over aan het gaan naar `pixi`.
+Meerdere opties. Zelf zijn we over aan het gaan naar Pixi vanaf Mamba.
 
 ### Conda
 
@@ -68,7 +77,8 @@ Ontwikkeling in meerdere packages tegelijk kan door deze te installeren als edit
 `hhnk-research-tools = { path = "../hhnk-research-tools", editable = true }`\
 Hierdoor worden aanpassingen in hhnk-reesarch-tools ook beschikbaar in dit project. Kernel herstarten nodig om bij te werken, of met `importlib.reload` wat opzetten.
 
-#FIXME Momenteel wat issues om hiermee ook een github action aan te zetten op een linux machine.
+[!WARNING]
+Momenteel (2025-04-01) wat issues om hiermee ook een github action aan te zetten op een linux machine. Om dit op te lossen zijn de directe editable installs in de `pixi.toml` commented. Om de env te laten werken moet `pixi run postinstall` gedraaid worden.
 
 
 # Formatting en linting
@@ -76,7 +86,7 @@ Installeer [Ruff](https://docs.astral.sh/ruff/) als vs-code extentie en als depd
 
 Gebruik formatting on save, voeg dit toe aan de `.vscode/settings.json`:
 
-```
+```json
 "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
@@ -86,11 +96,11 @@ Gebruik formatting on save, voeg dit toe aan de `.vscode/settings.json`:
 },
 ```
 
-De `ruff` instelligen staan in de [pyproject.toml](https://github.com/HHNK/python-workflow-demo/pyproject.toml). 
+De `ruff` instelligen staan in de [pyproject.toml](https://github.com/HHNK/python-workflow-demo/pyproject.toml).
 
 De defaults die we gebruiken over alle projecten zijn;
 
-```
+```toml
 [tool.ruff]
 # see https://docs.astral.sh/ruff/rules/ for meaning of rules
 line-length = 119
@@ -122,7 +132,7 @@ Zie `python_workflow_demo\scripts\nb_example.py` en `python_workflow_demo\script
 
 Om de interactive window te gebruiken moet jupyter aanwezig zijn in de environment. Dit staat in de `pixi.toml` onder de dependencies
 
-```
+```toml
 [dependencies]
 jupyterlab = "*"
 ipywidgets = "*"
@@ -130,8 +140,8 @@ ipywidgets = "*"
 
 
 # Logging
-De `logging` module heeft wat setup nodig om lekker te werken in notebooks. Met name het toevoegen van [(Stream)Handlers](https://docs.python.org/3/library/logging.handlers.html) kan tijdens ontwikkeling wat lastig zijn. Zie `python_workflow_demo\scripts\log_levels.py` voor een voorbeeld.
-
+De `logging` module heeft wat setup nodig om lekker te werken in notebooks. Met name het toevoegen van [(Stream)Handlers](https://docs.python.org/3/library/logging.handlers.html) kan tijdens ontwikkeling wat lastig zijn. Om dit beter te stroomlijnen hebben we in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/blob/main/hhnk_research_tools/logger.py) een extra wrapper gemaakt.\
+Zie `python_workflow_demo\scripts\log_levels.py` voor een voorbeeld. 
 
 # Project setup
 Voor projecten zijn er vaak ook padverwijzingen nodig naar bestanden om te kunnen laden / schrijven. We hebben in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/tree/main/hhnk_research_tools/folder_file_classes) een aantal classes ontwikkeld om hier wat makkelijk mee om te kunnen gaan.
@@ -150,8 +160,25 @@ Voorbeelden van projectsetups
 
 
 # Code testing
-pytest / unittest
-Github workflows
+Code tests zijn nodig om te controleren dat alles netjes blijft werken bij wijzigingen. En maakt het veel makkelijker om code te controleren.
+Dit kan via [pytests](https://docs.pytest.org/en/stable/) of [unittests](https://docs.python.org/3/library/unittest.html). Zelf gebruiken we pytests, niet echt een onderbouwde voorkeur, het werkt. Tests kunnen lokaal gedraaid worden en via een automatische workflow.
+
+ Lokaal via het Testing menu in vs-code.
+<img src="img/tests_vscode.png" width=""/>\
+
+
+In deze repo staat een voorbeeld hoe een [Github Workflow](https://docs.github.com/en/actions/writing-workflows) opgezet kan worden om de tests te draaien wanneer een Pull Request of Github wordt gedaan. Dit staat in `.github\workflows\test_automatic.yml`. En (werkende) yml toevoegen in deze map is genoeg om de action in te richten op Github, geen verdere configuratie nodig.
+De resultaten zijn op de repo te zien onder [Actions](https://github.com/HHNK/python-workflow-demo/actions).
+<img src="img/github_actions.png" width=""/>\
+
+# Code coverage
+
+
+# Version control
+
+
+# Docker / Podman
+
 
 # AI helpers
-Zelf thuis een [ollama](https://ollama.com/) installatie draaien waarmee je lokaal AI kan draaien. Met de [Continue](https://docs.continue.dev/getting-started/install) extension zijn code-hints mogelijk zonder de limieten van de free-tier van [copilot](https://code.visualstudio.com/docs/copilot/overview). Hiervoor is wel een redelijke GPU nodig. Ervaring tot nu is net iets minder dan de online tools.
+Zelf thuis een [Ollama](https://ollama.com/) installatie draaien waarmee je lokaal AI kan draaien. Met de [Continue](https://docs.continue.dev/getting-started/install) extension zijn code-hints mogelijk zonder de limieten van de free-tier van [Copilot](https://code.visualstudio.com/docs/copilot/overview). Hiervoor is wel een redelijke GPU nodig. Ervaring tot nu is net iets minder dan de online tools.
