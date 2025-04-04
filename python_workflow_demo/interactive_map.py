@@ -2,7 +2,7 @@
 import geopandas as gpd
 import hhnk_research_tools as hrt
 
-from python_workflow_demo.scripts.project import Project
+from python_workflow_demo.project import Project
 
 
 def make_interactive_map(gdf, output_path):

@@ -1,8 +1,8 @@
 # %%
 import pytest
 
-from python_workflow_demo.scripts.interactive_map import make_interactive_map
-from python_workflow_demo.scripts.project import Project
+from python_workflow_demo.interactive_map import make_interactive_map
+from python_workflow_demo.project import Project
 
 # def test_interactive_map():
 #     p = Project(r"D:\github\wvangerwen\demo_data")

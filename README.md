@@ -131,7 +131,7 @@ disable = ["W1203"]
 # Jupyter
 We gebruiken de python interactive window, zie https://code.visualstudio.com/docs/python/jupyter-support-py voor uitleg. Komt erop neer dat we geen `.ipynb` nodig hebben en alles in `.py` kunnen ontwikkelen door middel van code cells `# %%`. Dit is voor versiebeheer een must omdat `.ipynb` veel andere dingen dan code opslaat. Mocht je nog in een [juypterlab](https://jupyter.org/) omgeving in de browser werken, dan is de [jupytext](https://jupytext.readthedocs.io/en/latest/) een oplossing.
 
-Zie `python_workflow_demo\scripts\nb_example.py` en `python_workflow_demo\scripts\nb_example.ipynb`.
+Zie `python_workflow_demo\nb_example.py` en `python_workflow_demo\nb_example.ipynb`.
 
 Om de interactive window te gebruiken moet jupyter aanwezig zijn in de environment. Dit staat in de `pixi.toml` onder de dependencies
 
@@ -144,7 +144,7 @@ ipywidgets = "*"
 
 # Logging
 De `logging` module heeft wat setup nodig om lekker te werken in notebooks. Met name het toevoegen van [(Stream)Handlers](https://docs.python.org/3/library/logging.handlers.html) kan tijdens ontwikkeling wat lastig zijn. Om dit beter te stroomlijnen hebben we in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/blob/main/hhnk_research_tools/logger.py) een extra wrapper gemaakt.\
-Zie `python_workflow_demo\scripts\log_levels.py` voor een voorbeeld. 
+Zie `python_workflow_demo\log_levels.py` voor een voorbeeld. 
 
 # Project setup
 Voor projecten zijn er vaak ook padverwijzingen nodig naar bestanden om te kunnen laden / schrijven. We hebben in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/tree/main/hhnk_research_tools/folder_file_classes) een aantal classes ontwikkeld om hier wat makkelijk mee om te kunnen gaan.
@@ -152,13 +152,13 @@ Voor projecten zijn er vaak ook padverwijzingen nodig naar bestanden om te kunne
 Hiermee kunnen we op een centrale plek eenmaal de paden defineren en gebruiken over alle scripts. Bijvoorbeeld het inladen van een gpkg
 
 ```python
-from python_workflow_demo.scripts.project import Project
+from python_workflow_demo.project import Project
 p = Project(r"D:\github\wvangerwen\demo_data")
 gdf = p.input.panden.load()
 ```
 
 Voorbeelden van projectsetups
-- `python_workflow_demo\scripts\project.py`
+- `python_workflow_demo\project.py`
 - https://github.com/threedi/hhnk-threedi-tools/blob/main/hhnk_threedi_tools/core/folders.py
 
 
