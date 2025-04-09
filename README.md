@@ -60,7 +60,7 @@ Snellere conda. Ofwel [micromamba](https://mamba.readthedocs.io/en/latest/user_g
 
 ### Pixi
 
-- Bouwt op `pyproject.toml`. Conda+pip env management met `pixi.lock`-files.Lock-file moet in repo meegenomen worden.
+- Bouwt op `pyproject.toml`. Conda+pip env management met `pixi.lock`-files. Lock-file moet in repo meegenomen worden.
 
     - https://prefix.dev/blog/pixi_for_scientists
     - https://pixi.sh/dev/switching_from/poetry/
@@ -74,18 +74,19 @@ Snellere conda. Ofwel [micromamba](https://mamba.readthedocs.io/en/latest/user_g
 
 - installer: https://pixi.sh/latest/advanced/installation/, dit zet een .exe neer voegt het `pixi` command aan het pad toe.
 - env install: draai `pixi install`, `pixi update` in de cmd in het project. Elk command met `pixi` werkt de env bij naar wat er in de `pixi.toml` staat.
+- Voor productie kan het goed zijn om de environment niet standaard bij te werken. In de [documentatie](https://pixi.sh/latest/workspace/lockfile/#when-is-a-lock-file-generated) is beschreven dat dit met de `--frozen` tag kan, of de `PIXI_FROZEN=true` environment variable.
 
 ## Editable installs
 Ontwikkeling in meerdere packages tegelijk kan door deze te installeren als editable. Dit kan in de `pixi.toml` onder het kopje `[pypi-dependencies]`;\
 `hhnk-research-tools = { path = "../hhnk-research-tools", editable = true }`\
-Hierdoor worden aanpassingen in hhnk-reesarch-tools ook beschikbaar in dit project. Kernel herstarten nodig om bij te werken, of met `importlib.reload` wat opzetten.
+Hierdoor worden aanpassingen in hhnk-reesarch-tools ook beschikbaar in dit project. Er is een kernel herstart nodig om de wijzigingen te zien, of met `importlib.reload` wat opzetten.
 
-[!WARNING]
-Momenteel (2025-04-01) wat issues om hiermee ook een github action aan te zetten op een linux machine. Om dit op te lossen zijn de directe editable installs in de `pixi.toml` commented. Om de env te laten werken moet `pixi run postinstall` gedraaid worden.
+> [!WARNING]
+> Momenteel (2025-04-01) wat issues om hiermee ook een github action aan te zetten op een linux machine. Om dit op te lossen zijn de directe editable installs in de `pixi.toml` commented. Om de env te laten werken moet `pixi run postinstall` gedraaid worden.
 
 
 # Formatting en linting
-Installeer [Ruff](https://docs.astral.sh/ruff/) als vs-code extentie en als depdency in de `pixi.toml`/`enviroment.yml`.
+Installeer [Ruff](https://docs.astral.sh/ruff/) als vs-code extentie en als dependency in de `pixi.toml`/`enviroment.yml`.
 
 Gebruik formatting on save, voeg dit toe aan de `.vscode/settings.json`:
 
@@ -129,7 +130,7 @@ disable = ["W1203"]
 ```
 
 # Jupyter
-We gebruiken de python interactive window, zie https://code.visualstudio.com/docs/python/jupyter-support-py voor uitleg. Komt erop neer dat we geen `.ipynb` nodig hebben en alles in `.py` kunnen ontwikkelen door middel van code cells `# %%`. Dit is voor versiebeheer een must omdat `.ipynb` veel andere dingen dan code opslaat. Mocht je nog in een [juypterlab](https://jupyter.org/) omgeving in de browser werken, dan is de [jupytext](https://jupytext.readthedocs.io/en/latest/) een oplossing.
+We gebruiken de python interactive window, zie https://code.visualstudio.com/docs/python/jupyter-support-py voor uitleg. Komt erop neer dat we geen `.ipynb` nodig hebben en alles in `.py` kunnen ontwikkelen door middel van code cells gescheiden door: `# %%`. Dit is voor versiebeheer een must omdat `.ipynb` veel andere dingen dan code opslaat. Mocht je nog in een [juypterlab](https://jupyter.org/) omgeving in de browser werken, dan is de [jupytext](https://jupytext.readthedocs.io/en/latest/) een oplossing.
 
 Zie `python_workflow_demo\nb_example.py` en `python_workflow_demo\nb_example.ipynb`.
 
@@ -144,12 +145,12 @@ ipywidgets = "*"
 
 # Logging
 De `logging` module heeft wat setup nodig om lekker te werken in notebooks. Met name het toevoegen van [(Stream)Handlers](https://docs.python.org/3/library/logging.handlers.html) kan tijdens ontwikkeling wat lastig zijn. Om dit beter te stroomlijnen hebben we in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/blob/main/hhnk_research_tools/logger.py) een extra wrapper gemaakt.\
-Zie `python_workflow_demo\log_levels.py` voor een voorbeeld. 
+Zie `python_workflow_demo\log_levels.py` voor een voorbeeld.
 
 # Project setup
 Voor projecten zijn er vaak ook padverwijzingen nodig naar bestanden om te kunnen laden / schrijven. We hebben in [hhnk-research-tools](https://github.com/HHNK/hhnk-research-tools/tree/main/hhnk_research_tools/folder_file_classes) een aantal classes ontwikkeld om hier wat makkelijk mee om te kunnen gaan.
 
-Hiermee kunnen we op een centrale plek eenmaal de paden defineren en gebruiken over alle scripts. Bijvoorbeeld het inladen van een gpkg
+Hiermee kunnen we op een centrale plek eenmaal de paden defineren en gebruiken over alle scripts. Bijvoorbeeld het inladen van een gpkg:
 
 ```python
 from python_workflow_demo.project import Project
@@ -163,14 +164,14 @@ Voorbeelden van projectsetups
 
 
 # Code testing
-Code tests zijn nodig om te controleren dat alles netjes blijft werken bij wijzigingen. En maakt het veel makkelijker om code te controleren.
+Code tests zijn nodig om te controleren dat alles netjes blijft werken bij wijzigingen en maakt het veel makkelijker om code te controleren.
 Dit kan via [pytests](https://docs.pytest.org/en/stable/) of [unittests](https://docs.python.org/3/library/unittest.html). Zelf gebruiken we pytests, niet echt een onderbouwde voorkeur, het werkt. Tests kunnen lokaal gedraaid worden en via een automatische workflow.
 
  Lokaal via het Testing menu in vs-code.
 <img src="img/tests_vscode.png" width=""/>\
 
 
-In deze repo staat een voorbeeld hoe een [Github Workflow](https://docs.github.com/en/actions/writing-workflows) opgezet kan worden om de tests te draaien wanneer een Pull Request of Github wordt gedaan. Dit staat in `.github\workflows\test_automatic.yml`. En (werkende) yml toevoegen in deze map is genoeg om de action in te richten op Github, geen verdere configuratie nodig.
+In deze repo staat een voorbeeld hoe een [Github Workflow](https://docs.github.com/en/actions/writing-workflows) opgezet kan worden om de tests te draaien wanneer een Pull Request op Github wordt gedaan. Dit staat in `.github\workflows\test_automatic.yml`. Een (werkende) yml toevoegen in deze map is genoeg om de action in te richten op Github, er is geen verdere configuratie nodig.
 De resultaten zijn op de repo te zien onder [Actions](https://github.com/HHNK/python-workflow-demo/actions).
 <img src="img/github_actions.png" width=""/>\
 
