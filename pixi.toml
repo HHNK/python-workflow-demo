@@ -46,7 +46,8 @@ tqdm = "*"
 ruff = "*"
 gdal = "*"
 urllib3 = "<2.0" #threedi-api-client
-pytest = ">=8.3.5,<9"
+pytest = "*"
+pytest-cov = "*"
 
 [pypi-dependencies]
 python-dotenv = "*"
@@ -60,6 +61,7 @@ threedi-api-client = "==4.1.8"
 jupyterlab = "*"
 ipywidgets = "*"
 jupytext = "*"
+twine="*"
 
 [feature.dev.pypi-dependencies]
 # Editable installs, not installed on test. #FIXME doesnt work on Github Actions.
