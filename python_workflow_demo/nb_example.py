@@ -10,3 +10,8 @@ self = StartCalculationGui(data={})
 display(self.tab)
 
 # %%
+# %%
+import pandas as pd
+
+# %%
+df = pd.DataFrame([0,0],[0,0])
