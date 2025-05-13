@@ -15,9 +15,10 @@ lab = "jupyter lab"
 
 htt = "pip install --no-build-isolation --no-deps --disable-pip-version-check -e ../hhnk-threedi-tools"
 hrt = "pip install --no-deps -e ../hhnk-research-tools"
-pre-commit-install = "pre-commit install --install-hooks -t=pre-commit -t=pre-push"
+pre-commit-install = "pre-commit install --install-hooks -t=pre-push" #-t=pre-commit
 postinstall = { depends-on = ["htt", "hrt", "pre-commit-install"] }
 
+pre-commit-run = "pre-commit run --all-files"
 
 #Starting vs code using vs-code.cmd (pixi run code)
 code = "code"

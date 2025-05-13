@@ -1,4 +1,4 @@
-exclude: (^.pixi/|.snap)
+exclude: (^.pixi/)
 repos:
   - repo: local
     hooks:
@@ -8,4 +8,4 @@ repos:
         language: system
         types_or: [python, pyi]
         require_serial: true
-        stages: [pre-commit, manual]
+        stages: [pre-push, manual]
