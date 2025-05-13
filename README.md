@@ -138,8 +138,9 @@ disable = ["W1203"]
 
 
 # Git Hooks
+We installeren Git Hooks om automatisch bepaalde controles te doen voordat we code naar GitHub mogen pushen. Installatie gaat mee met `pixi run postinstall` of kan achteraf bijgewerkt worden met `pixi run pre-commit-install`.
 
-
+De hooks staan in de `.pre-commit-config.yaml`. In deze repo wordt bij een Push naar de remote gecontrolleerd op formatting door Ruff.
 
 # Jupyter
 We gebruiken de python interactive window, zie https://code.visualstudio.com/docs/python/jupyter-support-py voor uitleg. Komt erop neer dat we geen `.ipynb` nodig hebben en alles in `.py` kunnen ontwikkelen door middel van code cells gescheiden door: `# %%`. Dit is voor versiebeheer een must omdat `.ipynb` veel andere dingen dan code opslaat. Mocht je nog in een [juypterlab](https://jupyter.org/) omgeving in de browser werken, dan is de [jupytext](https://jupytext.readthedocs.io/en/latest/) een oplossing.
