@@ -5,6 +5,12 @@ Standaard setup voor python-projects bij HHNK. In de repo staan een aantal voorb
 
 Onderstaand staat uitgewerkt welke software wordt gebruikt, hoe testen opgezet kunnen worden, projectopzet en meer.
 
+# Installatie
+Om deze repo goed neer te zetten moeten een aantal stappen worden genomen:
+- `git clone` -> Clone de repo
+- `pixi install` -> installeer de python environment (draai dit in de repo;`cd python-workflow-demo`)
+- `pixi run postinstall`
+
 # IDE
 Voor de developer environment zijn er veel opties, we gebruiken [Visual Studio Code](https://code.visualstudio.com/download). Dit biedt goede integratie van notebooks en tal van andere extensions. Uiteindelijk zal persoonlijke voorkeur ook meespelen in de keuze. Om samenwerking binnen het team te bevorderen maken we alleen gebruik van vs-code.
 
@@ -38,6 +44,7 @@ Bij een mamba installatie kan het zijn dat de mamba installer niet in het window
 
 # Env management
 Meerdere opties. Zelf zijn we over aan het gaan naar Pixi vanaf Mamba.
+Zie [pixi FAQ](https://pixi.sh/dev/misc/FAQ/) voor overview verschillende install methods.
 
 ### Conda
 
@@ -128,6 +135,12 @@ convention = "numpy"
 [tool.pylint]
 disable = ["W1203"]
 ```
+
+
+# Git Hooks
+We installeren Git Hooks om automatisch bepaalde controles te doen voordat we code naar GitHub mogen pushen. Installatie gaat mee met `pixi run postinstall` of kan achteraf bijgewerkt worden met `pixi run pre-commit-install`.
+
+De hooks staan in de `.pre-commit-config.yaml`. In deze repo wordt bij een Push naar de remote gecontrolleerd op formatting door Ruff.
 
 # Jupyter
 We gebruiken de python interactive window, zie https://code.visualstudio.com/docs/python/jupyter-support-py voor uitleg. Komt erop neer dat we geen `.ipynb` nodig hebben en alles in `.py` kunnen ontwikkelen door middel van code cells gescheiden door: `# %%`. Dit is voor versiebeheer een must omdat `.ipynb` veel andere dingen dan code opslaat. Mocht je nog in een [juypterlab](https://jupyter.org/) omgeving in de browser werken, dan is de [jupytext](https://jupytext.readthedocs.io/en/latest/) een oplossing.
