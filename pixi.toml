@@ -13,10 +13,10 @@ style = {depends-on = ["sort_imports", "fmt"]} # `pixi run style`
 
 lab = "jupyter lab"
 
-htt = "pip install --no-build-isolation --no-deps --disable-pip-version-check -e ../hhnk-threedi-tools"
-hrt = "pip install --no-deps -e ../hhnk-research-tools"
+htt-install = "bin/install_htt.cmd"
+hrt-install = "bin/install_hrt.cmd"
 pre-commit-install = "pre-commit install --install-hooks -t=pre-push" #-t=pre-commit
-postinstall = { depends-on = ["htt", "hrt", "pre-commit-install"] }
+postinstall = { depends-on = ["htt-install", "hrt-install", "pre-commit-install"] }
 
 pre-commit-run = "pre-commit run --all-files"
 
