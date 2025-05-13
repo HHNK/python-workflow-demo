@@ -38,6 +38,7 @@ Bij een mamba installatie kan het zijn dat de mamba installer niet in het window
 
 # Env management
 Meerdere opties. Zelf zijn we over aan het gaan naar Pixi vanaf Mamba.
+Zie [pixi FAQ](https://pixi.sh/dev/misc/FAQ/) voor overview verschillende install methods.
 
 ### Conda
 
