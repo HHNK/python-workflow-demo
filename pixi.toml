@@ -22,7 +22,6 @@ style = {depends-on = ["sort_imports", "fmt"]} # `pixi run style`
 
 lab = "jupyter lab"
 
-hrt-install = "bin/install_hrt.cmd"
 pre-commit-install = "pre-commit install --install-hooks -t=pre-push" #-t=pre-commit
 postinstall = { depends-on = ["hrt-install", "htt-install", "pre-commit-install"] }
 
