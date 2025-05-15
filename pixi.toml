@@ -5,6 +5,15 @@ platforms = ["win-64", "linux-64"]
 version = "2025.1"
 # repository = "https://github.com/HHNK/spoc_hhnk"
 
+
+[target.win-64.tasks]
+hrt-install = "bin/install_hrt.cmd"
+htt-install = "bin/install_htt.cmd"
+
+[target.linux-64.tasks]
+hrt-install = "bash bin/install_hrt.sh"
+htt-install = "bash bin/install_htt.sh"
+
 [tasks]
 #Styling
 sort_imports = "python -m ruff check  ./**/*.py --select I --fix --force-exclude"
@@ -13,16 +22,16 @@ style = {depends-on = ["sort_imports", "fmt"]} # `pixi run style`
 
 lab = "jupyter lab"
 
-htt-install = "bin/install_htt.cmd"
 hrt-install = "bin/install_hrt.cmd"
 pre-commit-install = "pre-commit install --install-hooks -t=pre-push" #-t=pre-commit
-postinstall = { depends-on = ["htt-install", "hrt-install", "pre-commit-install"] }
+postinstall = { depends-on = ["hrt-install", "htt-install", "pre-commit-install"] }
 
 pre-commit-run = "pre-commit run --all-files"
 
 #Starting vs code using vs-code.cmd (pixi run code)
 code = "code"
 code_insiders = "code-insiders"
+
 
 [feature.test.tasks]
 tests = "python -m pytest tests_demo/"
