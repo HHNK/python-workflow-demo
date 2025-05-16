@@ -6,9 +6,19 @@ Standaard setup voor python-projects bij HHNK. In de repo staan een aantal voorb
 Onderstaand staat uitgewerkt welke software wordt gebruikt, hoe testen opgezet kunnen worden, projectopzet en meer.
 
 # Installatie
+## Lokaal
 Om deze repo goed neer te zetten moeten een aantal stappen worden genomen:
-- `git clone` -> Clone de repo
+- `git clone https://github.com/HHNK/python-workflow-demo` -> Clone de repo
 - `pixi install` -> installeer de python environment (draai dit in de repo;`cd python-workflow-demo`)
+- `pixi run postinstall`
+
+## Codespaces
+Github Codespace geven een platform om zonder installaties in de cloud ook te werken met een github branch en vs-code. Via de hoofdpagina van de repo https://github.com/HHNK/python-workflow-demo klikken op de groene `Code` rechtsboven en vanuit daar een Codespace aanmaken.
+
+Vervolgens moet de environment geinstalleerd worden en enkele vs-code extensions (zie (# IDE )). Verdere stappen
+- `curl -fsSL https://pixi.sh/install.sh | sh` in terminal vs-code -> install pixi
+- ctrl+shift+` -> restart shell
+- `pixi install`
 - `pixi run postinstall`
 
 # IDE
@@ -201,11 +211,3 @@ De resultaten zijn op de repo te zien onder [Actions](https://github.com/HHNK/py
 Zelf thuis een [Ollama](https://ollama.com/) installatie draaien waarmee je lokaal AI kan draaien. Met de [Continue](https://docs.continue.dev/getting-started/install) extension zijn code-hints mogelijk zonder de limieten van de free-tier van [Copilot](https://code.visualstudio.com/docs/copilot/overview). Hiervoor is wel een redelijke GPU nodig. Ervaring tot nu is net iets minder dan de online tools.
 
 
-# Codespaces
-Github Codespace geven een platform om zonder installties in de cloud ook te werken met een github branch en vs-code. Via de hoofdpagina van de repo https://github.com/HHNK/python-workflow-demo klikken op de groene `Code` rechtsboven en vanuit daar een Codespace aanmaken.
-
-Vervolgens moet de environment geinstalleerd worden en enkele vs-code extensions (zie boven). Verdere stappen
-- `curl -fsSL https://pixi.sh/install.sh | sh` in terminal vs-code -> install pixi
-- ctrl+shift+` -> restart shell
-- `pixi install`
-- `pixi run postinstall`
