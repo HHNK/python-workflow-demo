@@ -1,4 +1,4 @@
-# Python workflow demo
+# Python Project Template
 [![tests](https://github.com/HHNK/python-workflow-demo/actions/workflows/test_automatic.yml/badge.svg)](https://github.com/hhnk/python-workflow-demo/actions/workflows/test_automatic.yml)
 
 Standaard setup voor python-projects bij HHNK. In de repo staan een aantal voorbeelden van hoe een project ingericht kan worden waarmee makkelijk samengewerkt kan worden voor python ontwikkelwerk. 
